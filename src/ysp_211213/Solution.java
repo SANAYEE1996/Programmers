@@ -20,7 +20,7 @@ public class Solution {
         long up = 0;
         long left = 0;
         for(int i = 1; i < m; i++) {
-        	for(int j = 1; j < n; j++) {
+        	for(int j = 1; j < n; j++) { 
         		if(map[i][j] == -1) continue;
         		up = map[i-1][j];
         		left = map[i][j-1];
