@@ -1,6 +1,5 @@
 package ysp_211213;
 
-import java.util.Arrays;
 
 public class Solution {
 	public int solution(int m, int n, int[][] puddles) {
