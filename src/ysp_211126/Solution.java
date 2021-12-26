@@ -27,7 +27,7 @@ public class Solution {
         
         return max*max;
     }
-	
+	 
 	public static void makeMax(int [][]board, int i, int j) {
 		if(board[i][j] != 0 && board[i+1][j] != 0 && board[i][j+1] != 0 && board[i+1][j+1] != 0) {
 			if( board[i][j] == board[i+1][j] && board[i+1][j] == board[i][j+1]) {
