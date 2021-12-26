@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Solution {
-	
+	 
 	public int solution(String word) {
 		int answer = 0;
 		ArrayList<String> list = new ArrayList<>();
