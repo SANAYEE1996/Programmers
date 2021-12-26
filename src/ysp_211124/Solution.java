@@ -3,7 +3,7 @@ package ysp_211124;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
+ 
 public class Solution {
 	public String[] solution(String[] record) {
         HashMap<String, ArrayList<Integer>> map = new HashMap<>();
