@@ -8,7 +8,7 @@ public class Solution3 {
         minus(numbers, target, 0, sum, gogo);
         return gogo[0];
     }
-	
+	 
 	public static void plus(int[] numbers, int target, int flag, int sum,int[] gogo) {
 		sum += numbers[flag];
 		if(flag == numbers.length-1 && sum == target) {
