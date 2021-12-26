@@ -30,7 +30,7 @@ public class Solution {
         answer[1] = Collections.max(list);
         return answer;
     }
-	
+	 
 	public static void gogo(int[][] picture, int x, int y, int value, int[] flag) {
 		if(x > 0 && picture[x-1][y] == value) {
 			picture[x-1][y] = 0;
