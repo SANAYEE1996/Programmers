@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Solution {
-	
+	 
 	public int solution(int[][] maps) {
         int answer = -1;
         boolean[][] visited = new boolean[maps.length][maps[0].length];
