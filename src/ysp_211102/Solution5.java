@@ -1,5 +1,5 @@
 package ysp_211102;
-
+ 
 public class Solution5 {
 	public String solution(String number, int k) {
         String answer = "";
