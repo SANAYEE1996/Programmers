@@ -14,7 +14,7 @@ public class Solution2 {
         	return gogo(p);
         }
     }
-	
+	 
 	public static String gogo(String p) {
 		String u;
 		String v;
