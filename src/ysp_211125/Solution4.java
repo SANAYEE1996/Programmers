@@ -14,7 +14,7 @@ public class Solution4 {
 		String[] arr = new String[5];
 		String[] exam = new String[16];
 		int score = 0;
-		String key = "";
+		String key = ""; 
 		for(String i : info) {
 			arr = i.split(" ");
 			make(arr,exam);
