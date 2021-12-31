@@ -16,25 +16,17 @@ public class Solution {
 			set.add(s);
 			list.add(s);
 		}
-		int size = set.size();
-		set.clear();
+		ArrayList<String> orgin = new ArrayList<>(set);
 		int[] start = {0};
 		int end = 1;
 		ArrayList<int[]> map = new ArrayList<>();
 		for(int i = 0; i < gems.length; i++) {
-			set.clear();
-			set.addAll(list.subList(start[0], end));
-			if(set.size() == size) {
-				int[] a = new int[2];
-				a[0] = ++start[0];
-				a[1] = end;
-				map.add(a);
-				gogo(list, map, set, size, start, end);
+			if(list.subList(start[0], end).containsAll(orgin)) {
+				map.add(new int[] {++start[0], end});
+				gogo(list, map, orgin, start, end);
 			}
 			end++;
 		}
-		
-		
 		Collections.sort(map, new Comparator<int[]>() {
 			@Override
 			public int compare(int[] a, int[] b) {
@@ -48,27 +40,16 @@ public class Solution {
 				}
 			}
 		});
-		
-		
         return new int[] {map.get(0)[0], map.get(0)[1]};
     }
 	
-	public static void gogo(ArrayList<String> list,
-							ArrayList<int[]> map, 
-							HashSet<String> set, int size, int[] start, int end) {
-		
-		set.clear();
-		set.addAll(list.subList(start[0], end));
-		if(set.size() == size) {
-			start[0]++;
-			int[] a = new int[2];
-			a[0] = start[0];
-			a[1] = end;
-			map.add(a);
-			gogo(list, map, set, size, start, end);
+	public static void gogo(ArrayList<String> list, ArrayList<int[]> map, 
+							ArrayList<String> orgin, int[] start, int end) {
+		if(list.subList(start[0], end).containsAll(orgin)) {
+			map.add(new int[] {++start[0], end});
+			gogo(list, map, orgin, start, end);
 		}
 	}
-	
 
 	public static void main(String[] args) {
 		Solution s = new Solution();
@@ -87,18 +68,52 @@ public class Solution {
 		long end = 0;
 		HashSet<Integer> set = new HashSet<>();
 		ArrayList<Integer> list = new ArrayList<>();
+		ArrayList<Integer> ggg = new ArrayList<>();
 		for(int i = 0; i < 100000; i++) {
 			list.add(i+1);
 		}
+		for(int i = 0; i < 99999; i++) {
+			ggg.add(i+1);
+		}
+		
 		System.out.println("리스트 사이즈 : " +list.size());
+		
+		
+		
 		start = System.nanoTime();
 		set.addAll(list);
 		end = System.nanoTime();
 		System.out.println("add All 했을 때 시간 :\t\t" +((double)(end-start))/1000000000);
+		
+		start = System.nanoTime();
+		list.containsAll(ggg);
+		end = System.nanoTime();
+		BigDecimal cm = new BigDecimal(((double)(end-start))/1000000000);
+		System.out.println("containsAll 시간 :\t\t" +cm.toString().substring(0, 10));
+		
+		start = System.nanoTime();
+		ggg.addAll(list);
+		end = System.nanoTime();
+		cm = new BigDecimal(((double)(end-start))/1000000000);
+		System.out.println("arrayList에 addall 했을 때 시간 :\t" +cm.toString().substring(0, 10));
+		
+		start = System.nanoTime();
+		ggg.contains(100000);
+		end = System.nanoTime();
+		cm = new BigDecimal(((double)(end-start))/1000000000);
+		System.out.println("arrayList에서 찾았을때 시간 :\t\t" +cm.toString().substring(0, 10));
+		
+		start = System.nanoTime();
+		ggg.clear();;
+		end = System.nanoTime();
+		cm = new BigDecimal(((double)(end-start))/1000000000);
+		System.out.println("arrayList를 초기화 한 시간 : \t\t" +cm.toString().substring(0, 10));
+		
 		start = System.nanoTime();
 		set.clear();
 		end = System.nanoTime();
 		System.out.println("clear 했을 때 시간 :\t\t\t" +((double)(end-start))/1000000000);
+		
 		start = System.nanoTime();
 		set.add(1);
 		end = System.nanoTime(); 
