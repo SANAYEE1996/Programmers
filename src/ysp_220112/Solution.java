@@ -1,8 +1,11 @@
 package ysp_220112;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Stack;
 
 public class Solution {
     public int[] solution(String[] gems) {
@@ -51,7 +54,9 @@ public class Solution {
 
         return new int[] {start,end};
     }
-
+    
+    static int age;
+    
 	public static void main(String[] args) {
 		Solution s = new Solution();
 		
@@ -64,7 +69,8 @@ public class Solution {
 		System.out.println("the answer is : " +Arrays.toString(s.solution(b)));
 		System.out.println("the answer is : " +Arrays.toString(s.solution(c)));
 		System.out.println("the answer is : " +Arrays.toString(s.solution(d)));
-
+		
+		System.out.println(age);
 	}
 
 }
