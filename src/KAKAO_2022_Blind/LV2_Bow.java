@@ -9,6 +9,7 @@ public class LV2_Bow {
         int[] answer = new int[11];
         LinkedList<Integer> list = new LinkedList<>();
         for(int i : info) list.add(i);
+        System.out.println(list);
         HashMap<Integer, int[]> map = new HashMap<>();
         return answer;
     }
