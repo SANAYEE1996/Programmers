@@ -16,7 +16,7 @@ public class ShuttleBus {
 		}
 		
 		StringBuilder sb = new StringBuilder();
-		if(hour < 10) {
+		if(hour < 10) { 
 			sb.append(0);
 			sb.append(hour);
 			sb.append(":");
@@ -112,7 +112,7 @@ public class ShuttleBus {
         	list.add(startTime);
         	startTime = addTime(startTime, t);
         }
-        //System.out.println("셔틀 시간표 : "+list);
+        System.out.println("셔틀 시간표 : "+list);
         
         Arrays.sort(timetable, new Comparator<String>() {
         	@Override
@@ -133,40 +133,31 @@ public class ShuttleBus {
         });
         ArrayList<String> conn = new ArrayList<>();
         for(String s : timetable) crue.add(s);
-       // System.out.println("원래 크루원들 "+crue);
+        System.out.println("원래 크루원들 "+crue);
+        System.out.println("한번 최대 탑승 인원 :  "+m);
         
         String shuttle = "";
-        String people = "";
-        int count = 0;
         int size = 0;
         for(int i = 0; i < list.size(); i++) {
         	shuttle = list.get(i);
-        	count = m;
         	size = crue.size();
-        	for(int j = 0; j < size; j++) {
-        		people = crue.get(0);
-        		if(isPossible(shuttle, people)) {
-        			if(count == 1) {
-        				conn.add(minus(people));
-        			}
-    			}
-    			else {
-    				conn.add(shuttle);
-    				break;
-    			}
-        		count--;
-    			crue.remove(0);
-    			if(crue.size() == 0 && count > 0) {
-            		conn.add(shuttle);
-            	}
+        	if(size < m) {
+        		conn.add(shuttle);
+        		for(int j = 0; j < size; j++) {
+        			crue.remove(0);
+        		}
+        	}
+        	else {
+        		for(int j = 0; j < m; j++) {
+        			
+        		}
         	}
         }
         
+        System.out.println("나중 크루원들 "+crue);
+        System.out.println("최종 : " +conn);
         
-        //System.out.println("남은 크루원들 "+crue);
-        //System.out.println("최종 : " +conn);
-        
-        return conn.get(conn.size()-1);
+        return "";
     }
 
 	public static void main(String[] args) {
