@@ -136,28 +136,64 @@ public class ShuttleBus {
         System.out.println("원래 크루원들 "+crue);
         System.out.println("한번 최대 탑승 인원 :  "+m);
         
-        String shuttle = "";
+        String shuttleTime = "";
+        String crueTime = "";
+        int count = 0;
         int size = 0;
+        int lastFlag = list.size()-1;
         for(int i = 0; i < list.size(); i++) {
-        	shuttle = list.get(i);
+        	shuttleTime = list.get(i);
         	size = crue.size();
-        	if(size < m) {
-        		conn.add(shuttle);
+        	count = m;
+        	if(i == lastFlag) {	//최종 애들
         		for(int j = 0; j < size; j++) {
-        			crue.remove(0);
+        			crueTime = crue.get(0);
+        			if(count == 1) {
+        				if(isPossible(shuttleTime, crueTime)) {
+        					conn.add(minus(crueTime));
+        				}
+        				else {
+        					conn.add(shuttleTime);
+        				}
+        				break;
+        			}
+        			
+        			if(isPossible(shuttleTime, crueTime)) {
+        				crue.remove(0);
+        				count--;
+        			}
+        			else {
+        				conn.add(shuttleTime);
+        				break;
+        			}
         		}
+        		if(count >= 1 && crue.isEmpty()) {
+    				System.out.println("태울수 있는 인원이 남았는데 남은 크루원들이 없다?");
+    				conn.add(shuttleTime);
+    			}
         	}
         	else {
-        		for(int j = 0; j < m; j++) {
+        		for(int j = 0; j < size; j++) {
+        			crueTime = crue.get(0);
+        			if(count == 0) {
+        				break;
+        			}
         			
+        			if(isPossible(shuttleTime, crueTime)) {
+        				crue.remove(0);
+        				count--;
+        			}
+        			else {
+        				break;
+        			}
         		}
         	}
         }
         
         System.out.println("나중 크루원들 "+crue);
-        System.out.println("최종 : " +conn);
+        System.out.println("최종 셔틀 탑승자 : " +conn);
         
-        return "";
+        return conn.get(0);
     }
 
 	public static void main(String[] args) {
@@ -186,6 +222,9 @@ public class ShuttleBus {
 				"23:59", "23:59", 
 				"23:59", "23:59", 
 				"23:59", "23:59"}));
+		System.out.println();
+		System.out.println("the answer is : " +s.solution(1, 1, 5, new String[] {"00:01", "00:01", 
+				"00:01","00:01", "00:01", "00:02", "00:03", "00:04"}));
 		
 		
 	}
