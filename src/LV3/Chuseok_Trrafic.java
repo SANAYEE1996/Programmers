@@ -40,56 +40,9 @@ public class Chuseok_Trrafic {
 			}
 			
 		}
-		//System.out.println("시작 날짜 : " +startDay + " 일 , " +startHour + " 시 , " +startMin + " 분 , " +start +" 초");
-		//System.out.println("종료 날짜 : " +endDay + " 일 , " +endHour + " 시 , " +endMin + " 분 , " +end+" 초");
+		System.out.println("시작 날짜 : " +startDay + " 일 , " +startHour + " 시 , " +startMin + " 분 , " +start +" 초");
+		System.out.println("종료 날짜 : " +endDay + " 일 , " +endHour + " 시 , " +endMin + " 분 , " +end+" 초");
 		
-		
-		StringBuilder sb = new StringBuilder();
-		String key = sb.toString();
-		if(start == end) {
-			sb.append(endDay);
-			sb.append(endHour);
-			sb.append(endMin);
-			sb.append((int) end);
-			key = sb.toString();
-			System.out.println("키 : " +key);
-		}
-		else {
-			int startSec = (int) start;
-			int endSec = (int) end;
-			if(end - start < 0) {
-				for(int i = startSec; i <= 59; i++) {
-					sb.setLength(0);
-					sb.append(startDay);
-					sb.append(startHour);
-					sb.append(startMin);
-					sb.append(i);
-					key = sb.toString();
-					System.out.println("키 : " +key);
-				}
-				for(int i = 0; i <= endSec; i++) {
-					sb.setLength(0);
-					sb.append(endDay);
-					sb.append(endHour);
-					sb.append(endMin);
-					sb.append(i);
-					key = sb.toString();
-					System.out.println("키 : " +key);
-				}
-			}
-			else {
-				for(int i = startSec; i <= endSec; i++) {
-					sb.setLength(0);
-					sb.append(startDay);
-					sb.append(startHour);
-					sb.append(startMin);
-					sb.append(i);
-					key = sb.toString();
-					System.out.println("키 : " +key);
-				}
-			}
-			
-		}
 		
 		
 	}
