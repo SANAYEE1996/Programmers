@@ -7,7 +7,7 @@ public class Chuseok_Trrafic {
         for(String s : lines) {
         	exam = s.split(" ");
         	gogo(exam);
-        }
+        } 
         return answer;
     }
 	
