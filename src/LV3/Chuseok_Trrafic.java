@@ -33,7 +33,7 @@ public class Chuseok_Trrafic {
 			if(startMin < 0) {
 				startMin += 60;
 				startHour -= 1;
-				if(startHour < 0) {
+				if(startHour < 0) { 
 					startHour += 24;
 					startDay = "2016-09-14";
 				}
