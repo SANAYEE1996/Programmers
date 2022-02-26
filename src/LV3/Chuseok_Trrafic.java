@@ -30,7 +30,7 @@ public class Chuseok_Trrafic {
 		if(start < 0) {
 			start += 60;
 			startMin -= 1;
-			if(startMin < 0) {
+			if(startMin < 0) { 
 				startMin += 60;
 				startHour -= 1;
 				if(startHour < 0) { 
