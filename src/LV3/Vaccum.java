@@ -1,7 +1,5 @@
 package LV3;
 
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Vaccum {
 	public int solution(int[][] office, int r, int c, String[] move) {
