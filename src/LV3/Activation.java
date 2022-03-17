@@ -46,7 +46,7 @@ class Act {
     	end = 0;
     	int max = 0;
     	for (ArrayList<Integer> l : list) {
-			start = l.get(0);
+			start = l.get(0); 
 			end = l.get(1);
 			if(max < end) {
 				max = end;
