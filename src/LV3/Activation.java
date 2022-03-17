@@ -50,7 +50,7 @@ class Act {
 			end = l.get(1);
 			if(max < end) {
 				max = end;
-			}
+			} 
 			if(flag < start) {
 				System.out.println(flag + " " + max);
 				flag = beforeEnd;
