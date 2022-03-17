@@ -41,7 +41,7 @@ class Act {
     		}
     	});
     	int flag = 1;
-        int beforeEnd = 0;
+        int beforeEnd = 0; 
     	start = 0;
     	end = 0;
     	int max = 0;
