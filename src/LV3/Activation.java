@@ -57,7 +57,7 @@ class Act {
 				answer++;
 			} 
 			beforeEnd = end;
-		}
+		} 
     	System.out.println(flag + " " +max);
     	
     	
