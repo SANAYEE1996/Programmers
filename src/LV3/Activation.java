@@ -55,7 +55,7 @@ class Act {
 				System.out.println(flag + " " + max);
 				flag = beforeEnd;
 				answer++;
-			}
+			} 
 			beforeEnd = end;
 		}
     	System.out.println(flag + " " +max);
