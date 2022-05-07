@@ -1,4 +1,4 @@
-package LV3;
+package lv3;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
