@@ -1,4 +1,4 @@
-package LV3;
+package lv3;
 
 import java.util.Arrays;
 import java.util.Comparator;
