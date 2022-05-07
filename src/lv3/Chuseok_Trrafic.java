@@ -1,4 +1,4 @@
-package LV3;
+package lv3;
 
 public class Chuseok_Trrafic {
 	public int solution(String[] lines) {
