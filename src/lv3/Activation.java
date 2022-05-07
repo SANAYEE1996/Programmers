@@ -1,4 +1,4 @@
-package LV3;
+package lv3;
 
 import static java.util.stream.Collectors.toList;
 
