@@ -72,7 +72,7 @@ public class Chuseok_Trrafic {
 		System.out.println("the answer is : " +
 		s.solution(new String[] {"2016-09-15 00:00:00.000 2.3s", "2016-09-15 23:59:59.999 0.1s"}));
 		
-		
+		 
 		
 		double exam = 4.003 - 0.006 + 0.001;
 		System.out.println(Math.round(exam*1000)/1000.0);
