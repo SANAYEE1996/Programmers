@@ -17,13 +17,13 @@ public class Palindrome {
         }
         mid = middle;
         
-        //System.out.println("문자열 크기 : "+size + " 중앙 인덱스 : " +middle);
-        //System.out.println();
+        System.out.println("문자열 크기 : "+size + " 중앙 인덱스 : " +middle);
+        System.out.println();
         
         
-       // System.out.println("홀수로 크기 나눔 : ↓");
+        System.out.println("홀수로 크기 나눔 : ↓");
         for(int i = 0; i < size; i++) {
-        	//System.out.print(i + " ");
+        	System.out.print(i + " ");
         	if(i <= middle) {
         		tail = sb.toString();
         		head = s.substring(i+1,i+1+tail.length());
@@ -32,13 +32,13 @@ public class Palindrome {
         		tail = sb.toString().substring(0,size-i-1);
         		head = s.substring(i+1,i+1+tail.length());
         	}
-        	//System.out.println("head : "+head + "	tail : " + tail + "		최대 길이 : " +horse(head, tail));
+        	System.out.println("head : "+head + "	tail : " + tail + "		최대 길이 : " +horse(head, tail));
         	list.add(horse(head, tail));
         	sb.insert(0, s.charAt(i));
         }
         
-        //System.out.println();
-        //System.out.println("짝수로 크기 나눔 : ↓");
+        System.out.println();
+        System.out.println("짝수로 크기 나눔 : ↓");
         if(size % 2 != 0) {
         	middle--;
         }
@@ -46,9 +46,9 @@ public class Palindrome {
         sb.append(s.charAt(0));
         head = "";
         tail = "";
-        //System.out.println("0 head : " +head + "	tail : " +tail + "		최대길이 : " +zzaksu(head, tail));
+        System.out.println("0 head : " +head + "	tail : " +tail + "		최대길이 : " +zzaksu(head, tail));
         for(int i = 1; i < size; i++) {
-        	//System.out.print(i + " ");
+        	System.out.print(i + " ");
         	sb.insert(0, s.charAt(i));
         	if(i <= middle) {
         		tail = sb.toString();
@@ -59,7 +59,7 @@ public class Palindrome {
         		head = s.substring(i+1,i+1+tail.length());
         		mid--;
         	}
-        	//System.out.println("head : "+head + "	tail : "+tail + "		최대길이 : " +zzaksu(head, tail));
+        	System.out.println("head : "+head + "	tail : "+tail + "		최대길이 : " +zzaksu(head, tail));
         	list.add(zzaksu(head, tail));
         }
         
@@ -94,7 +94,7 @@ public class Palindrome {
 				if(head.charAt(i) != tail.charAt(i)) {
 					break;
 				}
-				length = i;
+				length = i+1;
 			}
 			return length*2;
 		}
@@ -109,6 +109,21 @@ public class Palindrome {
 		System.out.println();
 		System.out.println();
 		System.out.println("the answer : " +s.solution("abacde"));
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("the answer : " +s.solution("ABCCBA"));
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("the answer : " +s.solution("ecdabbeadc"));
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("the answer : " +s.solution("cdaebbadce"));
 		
 		String str = "abcdef";
 		System.out.println(str.substring(0,0));
