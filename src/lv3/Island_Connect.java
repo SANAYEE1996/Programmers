@@ -1,52 +1,60 @@
 package lv3;
 
-import java.util.Arrays;
 
 public class Island_Connect {
 	public int solution(int n, int[][] costs) {
         int answer = 0;
+        
         int[][] map = new int[n][n];
         
         for(int[] i : costs) {
         	map[i[0]][i[1]] = i[2];
         	map[i[1]][i[0]] = i[2];
         }
+        print(map);
         
-        for(int[] i : map) {
-        	System.out.println(Arrays.toString(i));
-        }
+        int distance = 0;
+        int targetIndex = 0;
         
-        int value = 0;
-        for(int i = 0; i < map.length; i++) {
-        	for(int j = 0; j < map[i].length; j++) {
+        boolean[] visited = new boolean[n];
+        
+        for(int i = 0; i < n; i++) {
+        	for(int j = 0; j < n; j++) {
+        		visited = new boolean[n];
+        		visited[i] = true;
         		if(i == j) continue;
-        		value = map[i][j];
-        		
+        		if(map[i][j] != 0) {
+        			distance = map[i][j];
+        			targetIndex = j;
+        			visited[j] = true;
+        		}
         		
         	}
         }
         
-        System.out.println();
-        
-        for(int[] i : map) {
-        	System.out.println(Arrays.toString(i));
-        }
         
         return answer;
     }
 	
-	public static void gogo(int[] now, int[] depart, int n, int departIndex) {
+	public static void gogo(int[][] map, boolean[] visited, int targetIndex) {
 		
-		int min = 9999999;
-		for(int i = 0; i < n; i++) {
-			if(now[i] != 0 && depart[i] != 0) {
-				if(depart[i] < min) {
-					min = depart[i];
-				}
-			}
+		for(int i = 0; i < visited.length; i++) {
+			
 		}
-		now[departIndex] = min;
+		
+		
 	}
+	
+	
+	public static void print(int[][] map) {
+		for(int[] i : map) {
+			for(int j : i) {
+				System.out.print(j + " ");
+			}
+			System.out.println();
+		}
+	}
+	
 	
 	
 
