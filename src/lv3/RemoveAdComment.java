@@ -1,58 +1,62 @@
 package lv3;
 
+import java.util.ArrayList;
+
 public class RemoveAdComment {
 	public String solution(String sentence) {
 		String answer = "";
 		StringBuilder sb = new StringBuilder();
-		System.out.println(sentence);
+		System.out.println("받은 값 : "+sentence);
+		ArrayList<Character> list = new ArrayList<>();
 		
-		char a = 0;
-		
-		char RuleOne = 0; //중간중간 들어가는 문자 
-		
-		char RuleTwo = 0; //단어 앞과 끝에 들어가는 문자
-		
-		boolean oneValid = false;
-		boolean twoValid = false;
+		char nowChar = 0;
+		char beforeChar = '!';
+		int beforeCharIndex = 0;
+		int nowCharIndex = 0;
+		int distance = 0;
 		
 		for(int i = 0; i < sentence.length(); i++) {
-			a = sentence.charAt(i);
-			if(a == ' ') {
+			nowChar = sentence.charAt(i);
+			nowCharIndex = i;
+			if(nowChar == ' ') {
+				System.out.println("공백 있으면 안됌!");
 				answer = "invalid";
 				break;
 			}
 			else {
-				if(a >= 97 && a <= 122) {//소문자 이면
-					System.out.println(a + " : Small Alphabet");
-					if(i == 0) { // 처음부터 소문자 나오는거면 RuleTwo
-						RuleTwo = a;
-						twoValid = true;
-						continue;
-					}
-					
-					if(oneValid && !twoValid) {
+				if(nowChar >= 97 && nowChar <= 122) {
+					distance = nowCharIndex - beforeCharIndex;
+					if(distance == 2) {
+						System.out.println("거리 : " +distance + " 현재 Char : " 
+											+nowChar + " 이전 Char : " +beforeChar);
 						
 					}
-					else if(!oneValid && twoValid) {
-						
+					else if(distance > 2) {
+						System.out.println("거리 : " +distance + " 현재 Char : " 
+								+nowChar + " 이전 Char : " +beforeChar);
 					}
-					else if(oneValid && twoValid) {
-						
+					else if(distance == 1) {
+						if(beforeChar != ' ') {
+							System.out.println("앞에 소문자가 있는데 뒤에 바로 소문자가 온 거");
+							answer = "invalid";
+							break;
+						}
+						System.out.println("거리 : " +distance + " 현재 Char : " 
+								+nowChar + " 이전 Char : " +beforeChar);
 					}
 					else {
-						
+						System.out.println("거리 : " +distance + " 현재 Char : " 
+								+nowChar + " 이전 Char : " +beforeChar);
 					}
-					
-					
-					
-					
-				}
-				else {					//대문자 이면
-					System.out.println(a + " : Big Alphabet");
-					sb.append(a);
+					beforeCharIndex = i;
+					beforeChar = nowChar;
 				}
 			}
 		}
+		
+		
+		
+		//System.out.println(sb.toString());
 		
         return answer;
     }
@@ -60,11 +64,14 @@ public class RemoveAdComment {
 	public static void main(String[] args) {
 		RemoveAdComment s = new RemoveAdComment();
 		
-		System.out.println("the answer is : " +s.solution("HaEaLaLaObWORLDb"));
-		System.out.println("the answer is : " +s.solution("SpIpGpOpNpGJqOqA"));
-		System.out.println("the answer is : " +s.solution("AxAxAxAoBoBoB"));
-		System.out.println("the answer is : " +s.solution(" AxAxAxAoBoBoB"));
-		System.out.println("the answer is : " +s.solution("AxAxAxAo BoBoB"));
+		System.out.println("the answer is : " +s.solution("HaEaLaLaObWORLDb") + "\n");
+		System.out.println("the answer is : " +s.solution("SpIpGpOpNpGJqOqA") + "\n");
+		System.out.println("the answer is : " +s.solution("AxAxAxAoBoBoB") + "\n");
+		System.out.println("the answer is : " +s.solution("aHELLOa bWORLDb") + "\n");
+		System.out.println("the answer is : " +s.solution("HaEaLaLObWORLDb") + "\n");
+		System.out.println("the answer is : " +s.solution("aHELLOWORLDa") + "\n");
+		System.out.println("the answer is : " +s.solution("HaEaLaLaOWaOaRaLaD") + "\n");
+		System.out.println("the answer is : " +s.solution("abHELLObaWORLD") + "\n");
 		
 
 	}
