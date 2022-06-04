@@ -14,7 +14,7 @@ public class NumberBlock {
 		for(int i = 2; i <= size; i++) {
 			mot = n/i;
 			nam = n%i;
-			if(nam == 0) {
+			if(nam == 0 && mot <= 10000000) {
 				answer = (int)mot;
 				break;
 			}
@@ -39,6 +39,7 @@ public class NumberBlock {
 		
 		System.out.println("the answer is : " +Arrays.toString(s.solution(1, 10)));
 		System.out.println("the answer is : " +Arrays.toString(s.solution(13, 30)));
+		System.out.println("the answer is : " +Arrays.toString(s.solution(999999, 1000000)));
 	}
 
 }
