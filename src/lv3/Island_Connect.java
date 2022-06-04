@@ -11,7 +11,7 @@ public class Island_Connect {
         	map[i[0]][i[1]] = i[2];
         	map[i[1]][i[0]] = i[2];
         }
-        print(map);
+        print(map); 
         
         int distance = 0;
         int targetIndex = 0;
