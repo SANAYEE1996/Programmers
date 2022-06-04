@@ -90,7 +90,7 @@ public class LV3_Destroy {
 		System.out.println("the answer is : " +s.solution(board2, skill2));
 		
 		int[] a = {1,1};
-		int[] b = {1,1};
+		int[] b = {1,1}; 
 		System.out.println(a.equals(b));
 
 	}
