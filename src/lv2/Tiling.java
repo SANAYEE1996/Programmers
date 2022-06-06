@@ -35,7 +35,7 @@ public class Tiling {
             return answer;
         }
     }
-
+ 
 	public static void main(String[] args) {
 		Tiling s = new Tiling();
 		
