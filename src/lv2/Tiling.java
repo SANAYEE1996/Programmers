@@ -26,46 +26,50 @@ public class Tiling {
 	}
 	
 	public long firstStage(int cnt) {
-		Tiling t = new Tiling();
 		long value = 0;
 		
 		for(int i = cnt; i >= 0; i--) {
-			value +=( ((long) Math.pow(2, i))%1000000007 * (t.comb((long) cnt, (long) i)) );
+			value +=( ((long) Math.pow(2, i))%1000000007 * (comb((long) cnt, (long) i)) );
 		}
 		
 		return value;
 	}
 	
+	
+	
 	public long secondStage(int n, int cnt) {
-		Tiling t = new Tiling();
 		long value = 0;
 		int fourMax = n/4;
-		int one = 0;
 
-		int twoMax = 0;
-		if(n % 4 == 2) {
-			twoMax = n/cnt+1;
-		}
-		else if(n % 4 == 0) {
-			twoMax = n/cnt;
-		}
-		System.out.println(fourMax + "  " + twoMax);
+		int twoMax = n/2-2;
+		
+		System.out.println("조합 밑 지수 : "+cnt);
 		for(int i = 1; i <= fourMax; i++) {
-			for(int j = twoMax; j >= 0; j --) {
-				System.out.println("4's 밑 : " +i + " // 2's 밑 : " + j + " // 1's 밑 : " +one);
-				value += ((long)(Math.pow(2, i)%1000000007 ) * 
-						  (long)(Math.pow(2, j)%1000000007 ) * 
-						  (long)(Math.pow(1, one)%1000000007 ) *
-						  (long)(t.comb((long) cnt-1, (long) j)%1000000007) * 
-						  (long)(t.comb((long) cnt-1, (long) one)%1000000007));
-				one++;
-			}
-			one = 0;
+			System.out.println("4의 최대 개수 : "+fourMax+" // 2의 최대 개수 : " +twoMax);
+			value += twoMaxMultiple(twoMax, i, cnt);
 			twoMax -= 2;
 		}
-		
-		
-		
+		System.out.println("두번째 단계 통과한 값 : " +value );
+		return value;
+	}
+	
+	public long twoMaxMultiple(int twoMax, int i, int cnt) {
+		int one = 0;
+		int value = 0;
+		for(int j = twoMax; j >= 0; j --) {
+			System.out.println("4's 밑 : " +i + " // 2's 밑 : " + j + " // 1's 밑 : " +one);
+			System.out.println("4가 블록인 경우의 수 : "+(long)(Math.pow(2, i)%1000000007 ));
+			System.out.println("2가 블록인 경우의 수 : "+(long)(Math.pow(2, j)%1000000007 ));
+			System.out.println("1이 블록인 경우의 수 : "+(long)(Math.pow(1, one)%1000000007 ));
+			System.out.println("2가 블록인 조합의 수 : "+(long)(comb((long) cnt-1, (long) j)%1000000007));
+			System.out.println("1이 블록인 조합의 수 :"+(long)(comb((long) cnt-1, (long) one)%1000000007));
+			value += ((long)(Math.pow(2, i)%1000000007 ) * 
+					  (long)(Math.pow(2, j)%1000000007 ) * 
+					  (long)(Math.pow(1, one)%1000000007 ) *
+					  (long)(comb((long) cnt-1, (long) j)%1000000007) * 
+					  (long)(comb((long) cnt-1, (long) one)%1000000007));
+			one++;
+		}
 		return value;
 	}
 	
@@ -79,28 +83,13 @@ public class Tiling {
 			return 3;
 		}
 		else {
-			System.out.println("firstStage : " + firstStage(cnt));
+			
+			System.out.println("\nfirstStage : " + firstStage(cnt));
 			answer += firstStage(cnt);
 			answer += secondStage(n, cnt);
 			return answer;
 		}
     }
- 
-	public static void main(String[] args) {
-		Tiling s = new Tiling();
-		
-		System.out.println("test case input 2 : " +s.solution(2) + "\n");
-		System.out.println("test case input 4 : " +s.solution(4) + "\n");
-		System.out.println("test case input 6 : " +s.solution(6) + "\n");
-		System.out.println("test case input 8 : " +s.solution(8) + "\n");
-		
-		System.out.println(s.comb(6, 1));
-		System.out.println(s.comb(6, 2));
-		System.out.println(s.comb(6, 3));
-		System.out.println(s.comb(6, 4));
-		System.out.println(s.comb(6, 5));
-		System.out.println(s.comb(6, 6));
 
-	}
 
 }
