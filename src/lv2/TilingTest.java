@@ -16,16 +16,6 @@ public class TilingTest {
 	}
 	
 	
-	@Test
-	public void combTest01() {
-		assertEquals(1, tiling.comb(6, 0));
-		assertEquals(6, tiling.comb(6, 1));
-		assertEquals(15, tiling.comb(6, 2));
-		assertEquals(20, tiling.comb(6, 3));
-		assertEquals(15, tiling.comb(6, 4));
-		assertEquals(6, tiling.comb(6, 5));
-		assertEquals(1, tiling.comb(6, 6));
-	}
 	
 	@Test
 	public void test01() {
@@ -65,7 +55,7 @@ public class TilingTest {
 	
 	@Test
 	public void twoMaxTest01() {
-		//assertEquals(7953, tiling.twoMaxMultiple(2, 1, 2));
+		assertEquals(658712818, tiling.solution(5000));
 	}
 	
 }
