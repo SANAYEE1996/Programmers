@@ -1,47 +1,89 @@
 package KAKAO_2022_Blind;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Map;
 
 public class LV2_Bow {
+	public int getTotalCount(int[] info) {
+		int totalCount = 0;
+        for(int i : info) totalCount += i;
+        return totalCount;
+	}
+	
+	public void putScoreToMap(Map<Integer,ArrayList<Integer>> map, int[] info) {
+		for(int i = 0; i < info.length; i++) {
+        	if(!map.containsKey(info[i]+1)) map.put(info[i]+1, new ArrayList<Integer>());
+        	map.get(info[i]+1).add(10-i);
+        }
+	}
+	
+	public void sortReverseScore(Map<Integer,ArrayList<Integer>> map) {
+		for(int key : map.keySet()) {
+        	Collections.sort(map.get(key), Collections.reverseOrder());
+        }
+	}
+	
+	public void getMaxScoreByLine(Object[] keyArray, Map<Integer,ArrayList<Integer>> map, 
+							ArrayList<Integer> list, int totalCount, int minusCount, int value, 
+							int MaxKeyIndex, int nowIndex,
+							ArrayList<Integer> maxList) {
+		int size = totalCount/minusCount;
+		if(minusCount >= totalCount && totalCount > 0) size = minusCount/totalCount;
+		if(size <= 0 || totalCount <= 0) {
+			maxList.add(value);
+		}
+		else {
+			System.out.println(list +" 에서 최대 몇번 먹을 수 있는가 : "+size);
+			for(int i = 0; i < size; i++) {
+				getMaxScore(keyArray, map, 
+						totalCount - minusCount, MaxKeyIndex, nowIndex + 1, value + list.get(i)
+						,maxList);
+				totalCount -= minusCount;
+				value += list.get(i);
+			}
+		}
+		
+	}
+	
+	public void getMaxScore(Object[] keyArray, Map<Integer,ArrayList<Integer>> map, 
+			int totalCount, int MaxKeyIndex, int nowIndex, int value,
+			ArrayList<Integer> maxList) {
+		if(nowIndex <= MaxKeyIndex) {
+			
+			//System.out.println("현재 최소 횟수 : " +(int) keyArray[nowIndex]);
+			//System.out.println("이걸로 먹을 수 있는 점수 : "+map.get(keyArray[nowIndex]));
+			//System.out.println("몇번 남았을 까 : " +totalCount);
+			getMaxScoreByLine(keyArray, map, 
+			map.get(keyArray[nowIndex]), totalCount, (int) keyArray[nowIndex], value, 
+			MaxKeyIndex, nowIndex,maxList);
+		}
+		
+	}
+	
 	public int[] solution(int n, int[] info) {
         int[] answer = new int[11];
-        LinkedList<Integer> list = new LinkedList<>();
-        for(int i : info) list.add(i);
+        int totalCount = getTotalCount(info);
+        Map<Integer,ArrayList<Integer>> map = new HashMap<>();
+        putScoreToMap(map, info);
+        sortReverseScore(map);
+        
+        Object[] keyArray = map.keySet().toArray();
+        Arrays.sort(keyArray);
+        ArrayList<Integer> list = new ArrayList<>();
+        System.out.println("총 쏠 수 있는 횟수 : " +totalCount);
+        
+        getMaxScore(keyArray, map, 
+        		totalCount, keyArray.length-1,0,0, 
+        		list);
+        
         System.out.println(list);
-        HashMap<Integer, int[]> map = new HashMap<>();
+        
         return answer;
     }
 	
-	public static void gogo(HashMap<Integer, int[]> map, LinkedList<Integer> list, int n) {
-		
-		
-		
-	}
-
-	public static void main(String[] args) {
-		
-		LV2_Bow s = new LV2_Bow();
-		
-		int n = 5;
-		int[] info = {2,1,1,1,0,0,0,0,0,0,0};
-		
-		int n2 = 1;
-		int[] info2 = {1,0,0,0,0,0,0,0,0,0,0};
-		
-		int n3 = 9;
-		int[] info3 = {0,0,1,2,0,1,1,1,1,1,1};
-		
-		int n4 = 10;
-		int[] info4 = {0,0,0,0,0,0,0,0,3,4,3};
-		
-		System.out.println("the answer is : " +Arrays.toString(s.solution(n, info)));
-		System.out.println("the answer is : " +Arrays.toString(s.solution(n2, info2)));
-		System.out.println("the answer is : " +Arrays.toString(s.solution(n3, info3)));
-		System.out.println("the answer is : " +Arrays.toString(s.solution(n4, info4)));
-
-	}
 
 }
 
