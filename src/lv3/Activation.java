@@ -82,7 +82,7 @@ public class Activation {
         })
             .map(String::trim)
             .map(Integer::parseInt)
-            .collect(toList());
+            .collect(toList()); //람다 스트림
 
         int result = Act.fountainActivation(locations);
         System.out.println(result);
