@@ -44,7 +44,7 @@ public class Chuseok_Trrafic {
 		System.out.println("종료 날짜 : " +endDay + " 일 , " +endHour + " 시 , " +endMin + " 분 , " +end+" 초");
 		
 		
-		
+		  
 	}
 
 	public static void main(String[] args) {
