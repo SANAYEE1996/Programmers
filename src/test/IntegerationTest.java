@@ -18,9 +18,9 @@ class IntegerationTest {
 	
 	@Test
 	void test() {
-		//System.out.println(mqs.solution(new int[] {3, 2, 7, 2}, new int[] {4, 6, 5, 1}));
-		//System.out.println(mqs.solution(new int[] {1, 2, 1, 2}, new int[] {1, 10, 1, 2}));
-		//System.out.println(mqs.solution(new int[] {1, 1}, new int[] {1, 5}));
+		System.out.println(mqs.solution(new int[] {3, 2, 7, 2}, new int[] {4, 6, 5, 1}));
+		System.out.println(mqs.solution(new int[] {1, 2, 1, 2}, new int[] {1, 10, 1, 2}));
+		System.out.println(mqs.solution(new int[] {1, 1}, new int[] {1, 5}));
 		
 		int[] queue1 = new int[300000];
 		int[] queue2 = new int[300000];
@@ -29,7 +29,7 @@ class IntegerationTest {
 			queue2[i] = 1;
 		}
 		queue2[299998] = 599999;
-		//assertEquals(-1, mqs.solution(new int[] {1}, new int[] {3}));
+		assertEquals(-1, mqs.solution(new int[] {1}, new int[] {3}));
 		System.out.println(mqs.solution(queue1, queue2));
 	}
 
